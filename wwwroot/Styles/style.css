@@ -1,0 +1,185 @@
+﻿.h-40px {
+    height: 40px;
+}
+.w-40px {
+    width: 40px;
+}
+.w-full {
+    width: 100%;
+}
+.float-right {
+    float: right;
+}
+.h-full {
+    height: 100%;
+}
+input::placeholder, textarea::placeholder {
+    color: silver !important;
+}
+.color-secondary {
+    color: #f15f22;
+}
+.color-primary {
+    color: rgb(20, 2, 85);
+}
+.bg-secondary {
+    background: #f15f22 !important;
+}
+.bg-primary {
+    background: rgb(20, 2, 85) !important;
+}
+section {
+    padding-block: 100px;
+}
+#app-logo {
+    width: auto;
+    height: 60px;
+}
+.nav-item a {
+    font-size: 17px;
+}
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header .navbar-nav {
+    width: 100%;
+    justify-content: center
+}
+
+
+header .navbar .nav-item {
+    padding-inline: 16px;
+    border-radius: 35px;
+    transition: 0.3s;
+}
+
+header .navbar .nav-item:hover {
+    background: #E6F0EE;
+
+}
+
+.banner {
+    height: 85vh;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.4) 80%, rgba(0,0,0,1)), url('/images/banner.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+}
+.banner__title {
+    font-size: 60px;
+    font-weight: bold;
+    max-width: 680px;
+    margin-bottom: 30px;
+}
+
+.banner__description {
+    font-size: 24px;
+    max-width: 780px
+}
+
+.page-title {
+    text-align: center;
+    font-weight: bold;
+    font-size: 40px;
+    color: rgb(20, 2, 85);
+}
+
+.page-subtitle {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 18px;
+    color: #f15f22;
+}
+.service-card .card-image-top {
+    height: 220px;
+    object-fit: cover;
+}
+.service-card .card-body p {
+    font-size: 14px;
+}
+.company-info i {
+    font-size: 45px;
+}
+.company-info p{
+    color: gray;
+    margin-bottom: 8px;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+.company-info h6 {
+    font-weight: bold;
+    font-size: 20px
+}
+.overview-description {
+    max-width: 650px
+}
+.member-card .card-title {
+    font-weight: bold;
+}
+
+@media (max-width: 992px) {
+    header .navbar {
+        top: calc(100% + 1px);
+        left: 0;
+        width: 100%;
+        z-index: 100;
+        background-color: white;
+        position: absolute;
+    }
+
+        header .navbar .dropdown-menu {
+            position: unset;
+        }
+
+    header .navbar-nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    header .navbar .nav-item {
+        width: calc(100% - 24px);
+        text-align: center;
+        border-radius: 12px 12px 0 0;
+        position: relative;
+    }
+
+        header .navbar .nav-item .dropdown-wrapper {
+            background-color: #E6F0EE;
+            box-shadow: none;
+            margin-top: 10px;
+        }
+
+    
+    header .navbar .nav-item:hover .nav-link {
+        font-weight: bold;
+    }
+
+    header .navbar .nav-item .nav-link {
+        font-size: 18px;
+        padding: 16px 0;
+    }
+}
+footer {
+    padding-block: 100px;
+    
+}
+.footer-logo {
+    width: 120px;
+}
+footer p, footer a {
+    color: gray;
+    text-decoration: none;
+    display: block;
+}
+footer .icon {
+    font-size: 22px;
+    color: white;
+}
+footer a {
+    font-size: 18px;
+    margin-bottom: 10px;
+}

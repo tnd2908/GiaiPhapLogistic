@@ -1,0 +1,136 @@
+﻿@using GiaiPhapLogistics.Models.Generated
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<GiaiPhapLogistics.Models.Generated.FrontPage>
+
+@{
+    Layout = null;
+
+    var rootItem = Umbraco.ContentAtRoot().FirstOrDefault();
+    var homeContent = rootItem?.SafeCast<FrontPage>();
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@Model.SEotitle</title>
+    <meta name="description" content="@Model.SEodescription">
+    <meta name="keywords" content="@Model.SEokeyword">
+    <meta property="og:image" content="@Model.SEoimage?.Url()">
+    <link href="https://kit-pro.fontawesome.com/releases/v5.15.1/css/pro.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="/Styles/style.css">
+
+    <!-- Cookieinformation Consent PopUp -->
+    <script id="CookieConsent" src="https://policy.app.cookieinformation.com/uc.js" data-culture="DA" type="text/javascript"></script>
+
+</head>
+
+<body>
+    @if (homeContent is null)
+    {
+        @RenderBody()
+    }
+    else
+    {
+        <!-- Header section -->
+        <header id="header">
+            <div class="container-fluid d-flex align-items-center justify-content-between px-5 py-3 border-bottom relative">
+                @if (homeContent.Logo is not null)
+                {
+                    <a class="navbar-brand" href="@homeContent.Url()">
+                        <img id="app-logo" src="@homeContent.Logo.Url()" alt="@homeContent.Logo.Name">
+                    </a>
+                }
+
+                <nav id="navbar" class="navbar navbar-expand-lg d-lg-flex collapse navbar-collapse" aria-label="">
+                    <ul class="navbar-nav mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a href="/" role="button" aria-expanded="false" class="nav-link">
+                                Trang chủ
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/" role="button" aria-expanded="false" class="nav-link">
+                                Giới thiệu
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/" role="button" aria-expanded="false" class="nav-link">
+                                Dịch vụ
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/" role="button" aria-expanded="false" class="nav-link">
+                                Liên hệ
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/" role="button" aria-expanded="false" class="nav-link">
+                                Thành viên
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="d-flex">
+                    <button class="bg-transparent p-0 ms-2 d-lg-none d-block rounded-circle border flex-center w-40px h-40px" data-bs-toggle="collapse"
+                            data-bs-target="#navbar">
+                        <img src="/images/bars-regular.svg" alt="">
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main section -->
+        <main id="main">
+            @RenderBody()
+        </main>
+
+        <!-- Footer section -->
+        <footer class="bg-dark">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 pe-3">
+                        <img class="footer-logo" src="@homeContent.Logo.Url()" alt="@homeContent.Logo.Name">
+                        <p class="mt-4">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut beatae itaque atque, similique, iusto quibusdam optio perferendis cumque fuga modi corrupti libero
+                        </p>
+                        <div class="mt-4">
+                            <h5 class="text-white fw-bold mb-3">Theo dõi chúng tôi</h5>
+                            <div class="d-flex mt-4">
+                                <a href="/"><i class="fab fa-facebook-f icon me-4"></i></a>
+                                <a href="/"><i class="fab fa-instagram icon me-4"></i></a>
+                                <a href="/"><i class="fab fa-twitter icon me-4"></i></a>
+                                <a href="/"><i class="fab fa-youtube icon me-4"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 ps-lg-5">
+                        <h4 class="text-white fw-bold mb-4">Links</h4>
+                        <a href="/">Dịch vụ</a>
+                        <a href="/">Giới thiệu</a>
+                        <a href="/">Liên hệ</a>
+                        <a href="/">Thành viên</a>
+                    </div>
+                    <div class="col-lg-4">
+                        <h4 class="text-white fw-bold mb-4">Thông tin liên hệ</h4>
+                        <p style="font-size: 18px" class="text-light">
+                            <i class="fal fa-envelope icon me-3"></i> @Model?.Email
+                        </p>
+                        <p style="font-size: 18px" class="text-light">
+                            <i class="fal fa-phone icon me-3"></i> @Model?.PhoneNumber
+                        </p>
+                        <p style="font-size: 18px" class="text-light">
+                            <i class="fal fa-map-marker-alt icon me-3"></i> @Model?.Address
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    }
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+
+</html>
