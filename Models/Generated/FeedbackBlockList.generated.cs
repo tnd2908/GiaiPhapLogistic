@@ -18,14 +18,14 @@ using Umbraco.Extensions;
 
 namespace GiaiPhapLogistics.Models.Generated
 {
-	/// <summary>Card Block List</summary>
-	[PublishedModel("cardBlockList")]
-	public partial class CardBlockList : PublishedElementModel
+	/// <summary>Feedback Block List</summary>
+	[PublishedModel("feedbackBlockList")]
+	public partial class FeedbackBlockList : PublishedElementModel
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "12.0.1+20a4e47")]
-		public new const string ModelTypeAlias = "cardBlockList";
+		public new const string ModelTypeAlias = "feedbackBlockList";
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "12.0.1+20a4e47")]
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "12.0.1+20a4e47")]
@@ -34,14 +34,14 @@ namespace GiaiPhapLogistics.Models.Generated
 			=> PublishedModelUtility.GetModelContentType(publishedSnapshotAccessor, ModelItemType, ModelTypeAlias);
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "12.0.1+20a4e47")]
 		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		public static IPublishedPropertyType GetModelPropertyType<TValue>(IPublishedSnapshotAccessor publishedSnapshotAccessor, Expression<Func<CardBlockList, TValue>> selector)
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(IPublishedSnapshotAccessor publishedSnapshotAccessor, Expression<Func<FeedbackBlockList, TValue>> selector)
 			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(publishedSnapshotAccessor), selector);
 #pragma warning restore 0109
 
 		private IPublishedValueFallback _publishedValueFallback;
 
 		// ctor
-		public CardBlockList(IPublishedElement content, IPublishedValueFallback publishedValueFallback)
+		public FeedbackBlockList(IPublishedElement content, IPublishedValueFallback publishedValueFallback)
 			: base(content, publishedValueFallback)
 		{
 			_publishedValueFallback = publishedValueFallback;
@@ -50,11 +50,11 @@ namespace GiaiPhapLogistics.Models.Generated
 		// properties
 
 		///<summary>
-		/// Cards
+		/// Feedbacks
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "12.0.1+20a4e47")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("cards")]
-		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListModel Cards => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockListModel>(_publishedValueFallback, "cards");
+		[ImplementPropertyType("feedbacks")]
+		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListModel Feedbacks => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockListModel>(_publishedValueFallback, "feedbacks");
 	}
 }

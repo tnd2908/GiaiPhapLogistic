@@ -58,28 +58,12 @@ namespace GiaiPhapLogistics.Models.Generated
 		public virtual string Address => this.Value<string>(_publishedValueFallback, "address");
 
 		///<summary>
-		/// Company overview
+		/// Blocks
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "12.0.1+20a4e47")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("companyOverview")]
-		public virtual string CompanyOverview => this.Value<string>(_publishedValueFallback, "companyOverview");
-
-		///<summary>
-		/// Company overview image
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "12.0.1+20a4e47")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("companyOverviewImage")]
-		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops CompanyOverviewImage => this.Value<global::Umbraco.Cms.Core.Models.MediaWithCrops>(_publishedValueFallback, "companyOverviewImage");
-
-		///<summary>
-		/// Company overview title
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "12.0.1+20a4e47")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("companyOverviewTitle")]
-		public virtual string CompanyOverviewTitle => this.Value<string>(_publishedValueFallback, "companyOverviewTitle");
+		[ImplementPropertyType("blocks")]
+		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListModel Blocks => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockListModel>(_publishedValueFallback, "blocks");
 
 		///<summary>
 		/// Email
@@ -96,14 +80,6 @@ namespace GiaiPhapLogistics.Models.Generated
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("logo")]
 		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops Logo => this.Value<global::Umbraco.Cms.Core.Models.MediaWithCrops>(_publishedValueFallback, "logo");
-
-		///<summary>
-		/// Members
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "12.0.1+20a4e47")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("members")]
-		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListModel Members => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockListModel>(_publishedValueFallback, "members");
 
 		///<summary>
 		/// Phone number
@@ -144,14 +120,6 @@ namespace GiaiPhapLogistics.Models.Generated
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("sEOTitle")]
 		public virtual string SEotitle => this.Value<string>(_publishedValueFallback, "sEOTitle");
-
-		///<summary>
-		/// Service cards
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "12.0.1+20a4e47")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("serviceCards")]
-		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListModel ServiceCards => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockListModel>(_publishedValueFallback, "serviceCards");
 
 		///<summary>
 		/// Working day

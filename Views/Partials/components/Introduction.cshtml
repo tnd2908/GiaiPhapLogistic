@@ -1,0 +1,22 @@
+﻿@using Umbraco.Cms.Core.Models.Blocks;
+@using GiaiPhapLogistics.Models.Generated
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<BlockListItem>
+
+@if (Model is not null)
+ {
+    var content = (CompanyIntroduction)Model.Content;
+    <section id="introduction">
+        <div class="container overview">
+            <div class="row">
+                <div class="col-lg-7">
+                    <h6 class="page-subtitle text-start">Giới thiệu về công ty</h6>
+                    <h1 class="banner__title mb-5 mt-4">@content.Title</h1>
+                    <div class="overview-description">@content.Description</div>
+                </div>
+                <div class="col-lg-5">
+                    <img alt="" class="w-full" src="@content.Image?.Url()" />
+                </div>
+            </div>
+        </div>
+    </section>
+}

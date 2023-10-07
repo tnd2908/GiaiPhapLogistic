@@ -3,7 +3,7 @@
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<GiaiPhapLogistics.Models.Generated.FrontPage>
 
 @{
-	Layout = "Master.cshtml";
+    Layout = "Master.cshtml";
 }
 <div class="banner">
     <div class="container h-full">
@@ -48,106 +48,7 @@
         </div>
     </div>
 </div>
-<section>
-	<div class="container">
-		<div class="row">
-            <div class="col-12 mb-5">
-                <h6 class="page-subtitle">Dịch vụ</h6>
-                <h2 class="page-title">Chúng tôi làm những gì</h2>
-            </div>
-            @if (Model.ServiceCards is not null && Model.ServiceCards.Any())
-             {
-                @foreach(var item in Model.ServiceCards)
-                 {
-                    var card = (ServiceCard)item.Content;
-                    <div class="col-lg-3 col-md-4">
-                        <div class="shadow card service-card border-0 h-full rounded overflow-hidden">
-                            <img class="card-image-top" alt="@card.Image?.Name" src="@card.Image?.Url()" />
-                            <div class="card-body">
-                                <h5 class="card-title text-center my-4">@card.Title</h5>
-                                @if (!string.IsNullOrEmpty(card.Description))
-                                {
-                                    <p class="card-text text-center mb-4">@card.Description</p>
-                                }
-                            </div>
-                        </div>
-                    </div>
-                 }
-             }
-		</div>
-	</div>
-</section>
-<section>
-    <div class="container overview">
-        <div class="row">
-            <div class="col-lg-7">
-                <h6 class="page-subtitle text-start">Giới thiệu về công ty</h6>
-                <h1 class="banner__title mb-5 mt-4">@Model.CompanyOverviewTitle</h1>
-                <p class="overview-description">@Model.CompanyOverview</p>
-            </div>
-            <div class="col-lg-5">
-                <img alt="" class="w-full" src="@Model.CompanyOverviewImage?.Url()" />
-            </div>
-        </div>
-    </div>
-</section>
-<section class="bg-primary">
-    <div class="container">
-        <div class="row rounded overflow-hidden">
-            <div class="col-xl-6 bg-white p-0">
-                <img class="d-block w-full object-fit-cover" src="/images/contact.png" />
-            </div>
-            <div class="col-xl-6 bg-white">
-                <form class="p-5">
-                    <h2 class="fw-bold">Liên hệ với chúng tôi</h2>
-                    <p class="mb-4">Điền thông tin của bạn vào form bên dưới để liên hệ với chúng tôi </p>
-                    <div class="b-3">
-                        <label for="name" class="form-label">Tên của bạn</label>
-                        <input type="text" class="form-control" placeholder="Nhập tên của bạn" id="name">
-                    </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" placeholder="Nhập email của bạn" id="email" aria-describedby="emailHelp">
-                    </div>
-                    <div class="mb-3">
-                        <label for="phoneNumber" class="form-label">Số điện thoại</label>
-                        <input type="text" class="form-control" placeholder="Nhập số điện thoại của bạn" id="phoneNumber">
-                    </div>
-                    <div class="mb-3">
-                        <label for="message" class="form-label">Lời nhắn</label>
-                        <textarea rows="4" type="text" class="form-control" placeholder="Nhập lời nhắn của bạn" id="message"></textarea>
-                    </div>
-                    <div class="d-flex justify-content-end">
-                        <button type="submit" class="btn bg-secondary text-white mt-3 col-lg-4 col-12">Gửi</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</section>
-<section>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 mb-5">
-                <h6 class="page-subtitle">Thành viên sáng lập</h6>
-                <h2 class="page-title">Chúng tôi gồm những ai</h2>
-            </div>
-            @if (Model.Members is not null && Model.Members.Any())
-            {
-                @foreach (var item in Model.Members)
-                {
-                    var card = (MemberCard)item.Content;
-                    <div class="col-lg-3 col-md-4">
-                        <div class="shadow card member-card border-0 h-full rounded overflow-hidden">
-                            <img class="card-image-top" alt="@card.Image?.Name" src="@card.Image?.Url()" />
-                            <div class="card-body">
-                                <h5 class="card-title text-center mt-3 my-2">@card.MemberName</h5>
-                                <p class="card-text text-center mb-3">@card.Title</p>
-                            </div>
-                        </div>
-                    </div>
-                }
-            }
-        </div>
-    </div>
-</section>
+@await Html.PartialAsync("~/Views/Partials/components/GeneralBlockList.cshtml", Model.Blocks)
+
+
+

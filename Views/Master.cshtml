@@ -52,23 +52,28 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/" role="button" aria-expanded="false" class="nav-link">
+                            <a href="#introduction" role="button" aria-expanded="false" class="nav-link">
                                 Giới thiệu
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/" role="button" aria-expanded="false" class="nav-link">
+                            <a href="#services" role="button" aria-expanded="false" class="nav-link">
                                 Dịch vụ
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/" role="button" aria-expanded="false" class="nav-link">
+                            <a href="#contact-form" role="button" aria-expanded="false" class="nav-link">
                                 Liên hệ
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/" role="button" aria-expanded="false" class="nav-link">
+                            <a href="#members" role="button" aria-expanded="false" class="nav-link">
                                 Thành viên
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#feedback" role="button" aria-expanded="false" class="nav-link">
+                                Phản hồi
                             </a>
                         </li>
                     </ul>
@@ -92,36 +97,34 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-4 pe-3">
-                        <img class="footer-logo" src="@homeContent.Logo.Url()" alt="@homeContent.Logo.Name">
-                        <p class="mt-4">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut beatae itaque atque, similique, iusto quibusdam optio perferendis cumque fuga modi corrupti libero
-                        </p>
+                        <img class="footer-logo" src="@homeContent.Logo?.Url()" alt="@homeContent.Logo.Name">
                         <div class="mt-4">
                             <h5 class="text-white fw-bold mb-3">Theo dõi chúng tôi</h5>
                             <div class="d-flex mt-4">
-                                <a href="/"><i class="fab fa-facebook-f icon me-4"></i></a>
-                                <a href="/"><i class="fab fa-instagram icon me-4"></i></a>
-                                <a href="/"><i class="fab fa-twitter icon me-4"></i></a>
-                                <a href="/"><i class="fab fa-youtube icon me-4"></i></a>
+                                <a href="/"><i class="fab fa-facebook-f icon text-white me-4"></i></a>
+                                <a href="/"><i class="fab fa-instagram icon text-white me-4"></i></a>
+                                <a href="/"><i class="fab fa-twitter icon text-white me-4"></i></a>
+                                <a href="/"><i class="fab fa-youtube icon text-white me-4"></i></a>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4 ps-lg-5">
                         <h4 class="text-white fw-bold mb-4">Links</h4>
-                        <a href="/">Dịch vụ</a>
-                        <a href="/">Giới thiệu</a>
-                        <a href="/">Liên hệ</a>
-                        <a href="/">Thành viên</a>
+                        <a href="#service">Dịch vụ</a>
+                        <a href="#introduction">Giới thiệu</a>
+                        <a href="#contact-form">Liên hệ</a>
+                        <a href="#members">Thành viên</a>
+                        <a href="#feedback">Phản hồi</a>
                     </div>
                     <div class="col-lg-4">
                         <h4 class="text-white fw-bold mb-4">Thông tin liên hệ</h4>
-                        <p style="font-size: 18px" class="text-light">
+                        <p style="font-size: 18px">
                             <i class="fal fa-envelope icon me-3"></i> @Model?.Email
                         </p>
-                        <p style="font-size: 18px" class="text-light">
+                        <p style="font-size: 18px">
                             <i class="fal fa-phone icon me-3"></i> @Model?.PhoneNumber
                         </p>
-                        <p style="font-size: 18px" class="text-light">
+                        <p style="font-size: 18px">
                             <i class="fal fa-map-marker-alt icon me-3"></i> @Model?.Address
                         </p>
                     </div>

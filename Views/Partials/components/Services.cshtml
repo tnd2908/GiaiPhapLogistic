@@ -1,0 +1,39 @@
+﻿@using Umbraco.Cms.Core.Models.Blocks;
+@using GiaiPhapLogistics.Models.Generated
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<BlockListItem>
+
+@if (Model is not null)
+ {
+    var content = (ServiceBlockList)Model.Content;
+    <section id="services">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-12 mb-5">
+                    <h6 class="page-subtitle">Dịch vụ</h6>
+                    <h2 class="page-title">Chúng tôi làm những gì</h2>
+                </div>
+                @if (content.Services is not null && content.Services.Any())
+                {
+                    @foreach (var item in content.Services)
+                    {
+                        var card = (ServiceCard)item.Content;
+                        <div class="col-lg-3 col-md-4">
+                            <div class="shadow card service-card border-0 h-full rounded overflow-hidden">
+                                <div class="overflow-hidden">
+                                    <img class="card-image-top" alt="@card.Image?.Name" src="@card.Image?.Url()" />
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title text-center my-4">@card.Title</h5>
+                                    @if (!string.IsNullOrEmpty(card.Description))
+                                    {
+                                        <p class="card-text text-center mb-4">@card.Description</p>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </section>
+}

@@ -1,0 +1,23 @@
+﻿@using Umbraco.Cms.Core.Models.Blocks;
+@using GiaiPhapLogistics.Models.Generated
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<BlockListModel>
+
+@{
+    var componentViewPathDict = new Dictionary<Type, string>
+{
+        {typeof(FeedbackBlockList), "~/Views/Partials/components/Feedback.cshtml"},
+        {typeof(MemberBlockList), "~/Views/Partials/components/Members.cshtml"},
+        {typeof(ServiceBlockList), "~/Views/Partials/components/Services.cshtml"},
+        {typeof(CompanyIntroduction), "~/Views/Partials/components/Introduction.cshtml"},
+        {typeof(ContactForm), "~/Views/Partials/components/ContactForm.cshtml"},
+    };
+}
+
+@foreach (var block in Model)
+{
+    var blockType = block.Content.GetType();
+    if (componentViewPathDict.TryGetValue(blockType, out var viewName))
+    {
+        @await Html.PartialAsync(viewName, block)
+    }
+}
