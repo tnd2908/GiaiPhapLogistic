@@ -15,8 +15,8 @@ namespace GiaiPhapLogistics.Controller
     [ApiController]
     public class HomeController : ControllerBase
     {
-        [HttpPost("test")]
-        public string SendEmail([FromBody] ContactInfo contactInfo)
+        [HttpPost]
+        public object SendEmail([FromBody] ContactInfo contactInfo)
         {
             string fromMail = "giaiphaplogisticemailservice@gmail.com";
             string fromPassword = "dgbdrrqrftrrykut";
@@ -44,7 +44,11 @@ namespace GiaiPhapLogistics.Controller
             };
 
             smtpClient.Send(message);
-            return "Send mail success";
+            var result = new
+            {
+                message = "Send email successfully"
+            };
+            return result;
         }
     }
 }

@@ -1,37 +1,101 @@
 ﻿@using Umbraco.Cms.Core.Models.Blocks;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<BlockListItem>
+@using GiaiPhapLogistics.Models.Generated
 
-<section id="contact-form" class="bg-primary">
-    <div class="container">
-        <div class="row rounded overflow-hidden">
-            <div class="col-xl-5 bg-white p-0 d-flex align-items-center">
-                <img class="d-block w-full object-fit-cover" src="/images/contact.png" />
-            </div>
-            <div class="col-xl-7 bg-white">
-                <form class="p-5">
-                    <h2 class="fw-bold">Liên hệ với chúng tôi</h2>
-                    <p class="mb-4">Điền thông tin của bạn vào form bên dưới để liên hệ với chúng tôi </p>
-                    <div class="mb-3">
-                        <label for="name" class="form-label">Tên của bạn</label>
-                        <input type="text" class="form-control" placeholder="Nhập tên của bạn" id="name">
-                    </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" placeholder="Nhập email của bạn" id="email" aria-describedby="emailHelp">
-                    </div>
-                    <div class="mb-3">
-                        <label for="phoneNumber" class="form-label">Số điện thoại</label>
-                        <input type="text" class="form-control" placeholder="Nhập số điện thoại của bạn" id="phoneNumber">
-                    </div>
-                    <div class="mb-3">
-                        <label for="message" class="form-label">Lời nhắn</label>
-                        <textarea rows="4" type="text" class="form-control" placeholder="Nhập lời nhắn của bạn" id="message"></textarea>
-                    </div>
-                    <div class="d-flex justify-content-end">
-                        <button type="submit" class="btn bg-secondary text-white mt-3 col-lg-4 col-12">Gửi</button>
-                    </div>
-                </form>
+@if (Model is not null)
+{
+    var content = (ContactForm)Model.Content;
+    @if (content.IsHidden == false)
+    {
+    <section id="contact-form" class="bg-primary">
+        <div class="container">
+            <div class="row rounded overflow-hidden">
+                <div class="col-xl-5 bg-white p-0 d-flex align-items-center">
+                    <img class="d-block w-full object-fit-cover" src="/images/contact.png" />
+                </div>
+                <div class="col-xl-7 bg-white">
+                    <form class="p-5">
+                        <h2 class="fw-bold">@content.Title</h2>
+                        @if (!String.IsNullOrEmpty(content.Subtitle))
+                        {
+                            <p class="mb-4">@content.Subtitle</p>
+                        }
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Tên của bạn</label>
+                            <input required name="name" onkeyup="onInputChange(this)" type="text" class="form-control" placeholder="Nhập tên của bạn" id="name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input name="email" required onkeyup="onInputChange(this)" type="email" class="form-control" placeholder="Nhập email của bạn" id="email" aria-describedby="emailHelp">
+                        </div>
+                        <div class="mb-3">
+                            <label for="phoneNumber" class="form-label">Số điện thoại</label>
+                            <input required onkeyup="onInputChange(this)" name="phoneNumber" type="text" class="form-control" placeholder="Nhập số điện thoại của bạn" id="phoneNumber">
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Lời nhắn</label>
+                            <textarea name="message" onkeyup="onInputChange(this)" rows="4" type="text" class="form-control" placeholder="Nhập lời nhắn của bạn" id="message"></textarea>
+                        </div>
+                        <div class="d-flex justify-content-end">
+                            <button disabled id="submitButton" onclick="onSubmit()" type="button" class="btn bg-secondary text-white mt-3 col-lg-4 col-12">
+                                @(content.SubmitText != null ? content.SubmitText : "Gửi")
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+    <script>
+        const isLoading = false;
+        const submitButton = document.getElementById('submitButton');
+        const stopLoading = () => {
+            submitButton.disabled = false;
+            submitButton.innerHTML = "Gửi"
+        }
+        const startLoading = () => {
+            submitButton.disabled = true;
+            submitButton.innerHTML = `
+                <div class="spinner-border" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+            `
+        }
+        const data = {
+            name: '',
+            email: '',
+            phoneNumber: '',
+            message: '',
+        }
+        const onInputChange = (e) => {
+            data[e.name] = e.value;
+            submitButton.disabled = Object.keys(data).some(key => !data[key]);
+        }
+        const onSubmit = async () => {
+            try {
+                startLoading();
+                const response = await fetch('/api/sendmail',
+                    {
+                        method: 'POST',
+                        body: JSON.stringify(data),
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                    })
+                if (response.status === 200) {
+                    const result = await response.json();
+                    stopLoading();
+                    alert("Đã gửi email thành công");
+                } else {
+                    alert("Đã có lỗi xảy ra, vui lòng thử lại sau!");
+                    stopLoading();
+                }
+            } catch (e) {
+                console.log(e);
+                alert("Đã có lỗi xảy ra, vui lòng thử lại sau!");
+                stopLoading();
+            }
+        }
+    </script>
+    }
+}

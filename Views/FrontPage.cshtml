@@ -4,14 +4,22 @@
 
 @{
     Layout = "Master.cshtml";
+    var image = Model.Image is not null ? Model.Image.Url() : "/images/banner.png";
 }
-<div class="banner">
+
+<div id="banner" class="banner" style="background-image: url(@image)">
     <div class="container h-full">
         <div class="d-flex flex-column justify-content-center h-full">
-            <h1 class="text-white banner__title">Giải Pháp Logistics 24h (giaiphap24h)!</h1>
-            <p class="text-white banner__description">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam suscipit neque, et explicabo autem qui soluta odio ipsa iste numquam harum laborum repellendus at ea eaque sequi, dolores fuga temporibus?
-            </p>
+            @if (!String.IsNullOrEmpty(Model.Title))
+            {
+                <h1 class="text-white banner__title">@Model.Title</h1>
+            }
+            @if (!String.IsNullOrEmpty(Model.Description))
+            {
+                <p class="text-white banner__description">
+                    @Model.Description
+                </p>
+            }
         </div>
     </div>
 </div>

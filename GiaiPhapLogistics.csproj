@@ -7,6 +7,8 @@
 
   <ItemGroup>
     <PackageReference Include="Umbraco.Cms" Version="12.0.1" />
+    <PackageReference Include="uSync" Version="12.2.0" />
+    <PackageReference Include="uSync.Core" Version="12.2.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,6 +28,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="Controller\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Update="appsettings-schema.usync.json">
+      <DependentUpon>appsettings-schema.json</DependentUpon>
+    </Content>
   </ItemGroup>
   <PropertyGroup>
     <!-- Razor files are needed for the backoffice to work correctly -->
